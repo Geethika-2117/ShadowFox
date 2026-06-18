@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LoanWise AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="nav-logo">
+            <i class="fa-solid fa-building-columns"></i>
+            LoanWise AI
+        </div>
+
+    </nav>
+
+    <div class="container">
+
+        <!-- MAIN SECTION -->
+
+        <section class="prediction-section">
+
+            <!-- LEFT IMAGE PANEL -->
+
+           <div class="image-panel">
+
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png" alt="Loan Approval">
+
+    <h2>Smart Loan Approval</h2>
+
+    <p>
+        Predict loan eligibility using
+        Machine Learning and financial analysis.
+    </p>
+
+    <div class="eligibility-box">
+<br><br>
+        <h3>Loan Eligibility Insights</h3>
+
+        <div class="insight-item">
+            <span class="icon">✓</span>
+            <div>
+                <h4>Credit History</h4>
+                <p>Good repayment records improve approval chances.</p>
+            </div>
+        </div><br>
+
+        <div class="insight-item">
+            <span class="icon">✓</span>
+            <div>
+                <h4>Income Stability</h4>
+                <p>Stable earnings indicate better repayment capability.</p>
+            </div>
+        </div><br>
+
+        <div class="insight-item">
+            <span class="icon">✓</span>
+            <div>
+                <h4>Loan Amount</h4>
+                <p>Lower loan burden increases eligibility.</p>
+            </div>
+        </div><br>
+
+        <div class="insight-item">
+            <span class="icon">✓</span>
+            <div>
+                <h4>Property Area</h4>
+                <p>Location is considered during evaluation.</p>
+            </div>
+        </div><br>
+
+    </div>
+
+</div>
+
+            <!-- RIGHT FORM PANEL -->
+
+            <div class="form-panel">
+
+                <h2>Loan Application Details</h2>
+
+                <form action="/predict" method="POST">
+
+                    <!-- Gender -->
+
+                    <label>Gender</label>
+
+                    <div class="radio-group">
+
+                        <label class="radio-card">
+                            <input type="radio"
+                                   name="gender"
+                                   value="Male"
+                                   required>
+                            <span>Male</span>
+                        </label>
+
+                        <label class="radio-card">
+                            <input type="radio"
+                                   name="gender"
+                                   value="Female">
+                            <span>Female</span>
+                        </label>
+
+                    </div>
+
+                    <!-- Marital Status -->
+
+                    <label>Marital Status</label>
+
+                    <div class="radio-group">
+
+                        <label class="radio-card">
+                            <input type="radio"
+                                   name="married"
+                                   value="Yes"
+                                   required>
+                            <span>Married</span>
+                        </label>
+
+                        <label class="radio-card">
+                            <input type="radio"
+                                   name="married"
+                                   value="No">
+                            <span>Single</span>
+                        </label>
+
+                    </div>
+
+                    <!-- Education -->
+
+                    <label>Education</label>
+
+                    <div class="radio-group">
+
+                        <label class="radio-card">
+                            <input type="radio"
+                                   name="education"
+                                   value="Graduate"
+                                   required>
+                            <span>Graduate</span>
+                        </label>
+
+                        <label class="radio-card">
+                            <input type="radio"
+                                   name="education"
+                                   value="Not Graduate">
+                            <span>Not Graduate</span>
+                        </label>
+
+                    </div>
+
+                    <!-- Employment -->
+
+                    <label>Employment Type</label>
+
+                    <div class="radio-group">
+
+                        <label class="radio-card">
+                            <input type="radio"
+                                   name="self_employed"
+                                   value="Yes"
+                                   required>
+                            <span>Self Employed</span>
+                        </label>
+
+                        <label class="radio-card">
+                            <input type="radio"
+                                   name="self_employed"
+                                   value="No">
+                            <span>Salaried</span>
+                        </label>
+
+                    </div>
+
+                    <!-- Credit History -->
+
+                    <label>Credit History</label>
+
+                    <div class="radio-group">
+
+                        <label class="radio-card">
+                            <input type="radio"
+                                   name="credit_history"
+                                   value="1"
+                                   required>
+                            <span>Good</span>
+                        </label>
+
+                        <label class="radio-card">
+                            <input type="radio"
+                                   name="credit_history"
+                                   value="0">
+                            <span>Poor</span>
+                        </label>
+
+                    </div>
+
+                    <!-- Property Area -->
+
+                    <label>Property Area</label>
+
+                    <div class="radio-group">
+
+                        <label class="radio-card">
+                            <input type="radio"
+                                   name="property_area"
+                                   value="Urban"
+                                   required>
+                            <span>Urban</span>
+                        </label>
+
+                        <label class="radio-card">
+                            <input type="radio"
+                                   name="property_area"
+                                   value="Semiurban">
+                            <span>Semiurban</span>
+                        </label>
+
+                        <label class="radio-card">
+                            <input type="radio"
+                                   name="property_area"
+                                   value="Rural">
+                            <span>Rural</span>
+                        </label>
+
+                    </div>
+
+                    <!-- Numeric Inputs -->
+
+                    <div class="form-grid">
+
+                        <input type="number"
+                               name="dependents"
+                               placeholder="Dependents"
+                               required>
+
+                        <input type="number"
+                               name="applicant_income"
+                               placeholder="Applicant Income"
+                               required>
+
+                        <input type="number"
+                               name="coapplicant_income"
+                               placeholder="Co-Applicant Income"
+                               required>
+
+                        <input type="number"
+                               name="loan_amount"
+                               placeholder="Loan Amount"
+                               required>
+
+                        <input type="number"
+                               name="loan_term"
+                               placeholder="Loan Term"
+                               required>
+
+                    </div>
+
+                    <button type="submit"
+                            class="predict-btn">
+
+                        Predict Loan Approval
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+        <!-- RESULT SECTION -->
+
+        <section class="result-section">
+
+    <div class="result-card">
+
+        <h2>Prediction Result</h2>
+
+        {% if prediction == "Approved" %}
+
+            <div class="approved">
+                ✅ LOAN APPROVED
+            </div>
+
+            <div class="reason-box success-box">
+
+                <h3>Approval Summary</h3>
+
+                <p>{{ reason }}</p>
+
+            </div>
+
+        {% elif prediction == "Rejected" %}
+
+            <div class="rejected">
+                ❌ LOAN REJECTED
+            </div>
+
+            <div class="reason-box">
+
+                <h3>Reasons for Rejection</h3>
+
+                <ul>
+
+                    {% for r in reason %}
+
+                        <li>{{ r }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            </div>
+
+        {% elif prediction == "Error" %}
+
+<div class="rejected">
+    ⚠ ERROR
+</div>
+
+<div class="reason-box">
+
+    <h3>Application Error</h3>
+
+    <ul>
+        {% for r in reason %}
+            <li>{{ r }}</li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+{% else %}
+
+<div class="waiting">
+
+    Fill the form and click
+    Predict Loan Approval.
+
+</div>
+
+{% endif %}
+
+    </div>
+
+</section>
+
+        </section>
+
+    </div>
+
+</body>
+</html>
